@@ -20,7 +20,7 @@ function Section({ title, count, children, defaultOpen = true }: SectionProps) {
     <div className="border border-gray-200 rounded-lg overflow-hidden">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-3 py-2 bg-[#e8f0f7] text-sm font-semibold text-gray-700 cursor-pointer"
+        className="w-full flex items-center justify-between px-3 py-2 bg-[#e8f0f7] dark:bg-[#1e3a52] text-sm font-semibold text-gray-700 dark:text-slate-200 cursor-pointer"
       >
         <span>{title}{count !== undefined ? ` (${count})` : ""}</span>
         {open
@@ -42,7 +42,7 @@ function CheckboxItem({ label, checked, onChange }: { label: string; checked: bo
         onChange={onChange}
         className="w-3.5 h-3.5 rounded-sm accent-[#B17F3D] cursor-pointer"
       />
-      <span className="text-sm text-gray-600 flex-1 truncate" title={label}>{label}</span>
+      <span className="text-sm text-gray-600 dark:text-slate-300 flex-1 truncate" title={label}>{label}</span>
     </label>
   );
 }
@@ -78,7 +78,7 @@ export default function FiltersSidebar({ aggregations, onClose }: Props) {
   const hasActiveFilters = filters.sectors || filters.tags || filters.formats || filters.Geography;
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 space-y-2">
+    <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 shadow-sm p-4 space-y-2">
       <div className="flex items-center justify-between mb-2">
         <h2 className="text-[16px] font-bold text-[#194c71] tracking-widest uppercase">Filters</h2>
         <div className="flex items-center gap-2">

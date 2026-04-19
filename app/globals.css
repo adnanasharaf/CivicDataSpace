@@ -6,13 +6,8 @@
   --color-civic-amber: #f59e0b;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-sans), system-ui, sans-serif;
@@ -20,34 +15,86 @@ body {
   color: #1e293b;
 }
 
-.dark body {
-  background-color: #0f172a;
-  color: #e2e8f0;
-}
+/* ── Dark mode base ── */
+.dark body { background-color: #0f172a; color: #e2e8f0; }
 
-.dark .bg-gray-50 { background-color: #0f172a; }
-.dark .bg-white { background-color: #1e293b; }
+/* Backgrounds */
+.dark .bg-gray-50  { background-color: #0f172a; }
+.dark .bg-white    { background-color: #1e293b; }
 .dark .bg-gray-100 { background-color: #1e293b; }
+.dark .bg-\[\#e8f0f7\] { background-color: #1e3a52; }
+.dark .bg-red-50   { background-color: #3b1a1a; }
+
+/* Borders */
 .dark .border-gray-200 { border-color: #334155; }
+.dark .border-gray-300 { border-color: #334155; }
+.dark .border-\[\#dfe5ea\] { border-color: #334155; }
+.dark .border-\[\#e5e5e5\] { border-color: #334155; }
+
+/* Text — Tailwind classes */
+.dark .text-gray-400 { color: #94a3b8; }
 .dark .text-gray-500 { color: #94a3b8; }
 .dark .text-gray-600 { color: #94a3b8; }
 .dark .text-gray-700 { color: #cbd5e1; }
+.dark .text-gray-800 { color: #e2e8f0; }
 .dark .text-gray-900 { color: #f1f5f9; }
+
+/* Text — hardcoded hex used in components */
+.dark .text-\[\#666\]    { color: #94a3b8; }
+.dark .text-\[\#777\]    { color: #94a3b8; }
+.dark .text-\[\#555\]    { color: #cbd5e1; }
+.dark .text-\[\#6f6f6f\] { color: #94a3b8; }
+.dark .text-\[\#194c71\] { color: #84DCCF; }
+.dark .text-\[\#1a6fa8\] { color: #84DCCF; }
+.dark .text-gray-300     { color: #64748b; }
+
+/* DatasetListing bg */
+.dark .min-h-screen.bg-gray-50 { background-color: #0f172a; }
+
+/* SearchBar input */
+.dark input[type="text"] {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border-color: #334155;
+}
+.dark input[type="text"]::placeholder { color: #64748b; }
+
+/* Select (Pagination rows per page) */
+.dark select {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border-color: #334155;
+}
+.dark option { background-color: #1e293b; color: #e2e8f0; }
+
+/* SortDropdown */
+.dark .hover\:bg-\[\#e8f0f7\]:hover { background-color: #1e3a52; }
+
+/* FiltersSidebar section header */
+.dark .bg-\[\#e8f0f7\] { background-color: #1e3a52; }
+.dark .text-gray-700.bg-\[\#e8f0f7\] { color: #cbd5e1; }
+
+/* Pagination nav buttons */
+.dark .border-gray-300.text-gray-600 { border-color: #334155; color: #94a3b8; }
+.dark .border-gray-200.text-gray-300 { border-color: #1e293b; color: #475569; }
+.dark .hover\:bg-blue-50:hover { background-color: #1e3a52; }
+
+/* Shadows */
 .dark .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0,0,0,0.4); }
 .dark .shadow-md { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.5); }
+.dark .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.6); }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
+/* Skeleton shimmer */
+.dark .bg-gray-200 { background-color: #334155; }
+.dark .bg-gray-100 { background-color: #1e293b; }
+
+/* Mobile filter drawer */
+.dark .bg-white.shadow-xl { background-color: #1e293b; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+.dark ::-webkit-scrollbar-track { background: #1e293b; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+.dark ::-webkit-scrollbar-thumb { background: #475569; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }

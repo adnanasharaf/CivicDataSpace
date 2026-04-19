@@ -5,6 +5,7 @@ import StoreProvider from "@/src/components/StoreProvider";
 import Header from "@/src/components/Header";
 import Footer from "@/src/components/Footer";
 import ThemeProvider from "@/src/components/ThemeProvider";
+import Breadcrumb from "@/src/components/Breadcrumb";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <StoreProvider>
           <ThemeProvider>
             <Header />
+            <Breadcrumb />
             <main className="flex-1">{children}</main>
             <Footer />
           </ThemeProvider>

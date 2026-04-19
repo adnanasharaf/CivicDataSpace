@@ -5,6 +5,7 @@ import reducer, {
   setSize,
   setSort,
   setViewMode,
+  setTheme,
   resetFilters,
 } from "@/src/store/appSlice";
 import type { Filters } from "@/src/types";
@@ -21,7 +22,7 @@ const initialFilters: Filters = {
   order: "desc",
 };
 
-const initialState = { filters: initialFilters, viewMode: "grid" as const };
+const initialState = { filters: initialFilters, viewMode: "grid" as const, theme: "light" as const };
 
 describe("appSlice", () => {
   it("returns initial state", () => {
@@ -57,6 +58,17 @@ describe("appSlice", () => {
   it("setViewMode switches to list", () => {
     const state = reducer(initialState, setViewMode("list"));
     expect(state.viewMode).toBe("list");
+  });
+
+  it("setTheme switches to dark", () => {
+    const state = reducer(initialState, setTheme("dark"));
+    expect(state.theme).toBe("dark");
+  });
+
+  it("setTheme switches back to light", () => {
+    const prev = { ...initialState, theme: "dark" as const };
+    const state = reducer(prev, setTheme("light"));
+    expect(state.theme).toBe("light");
   });
 
   it("resetFilters restores initial filters", () => {

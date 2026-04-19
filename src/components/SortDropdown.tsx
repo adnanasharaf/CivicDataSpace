@@ -41,7 +41,7 @@ export default function SortDropdown() {
     <div className="flex items-center gap-2">
       <button
         onClick={toggleSortOrder}
-        className="flex items-center justify-center w-9 h-9 rounded-md border border-gray-200 bg-white hover:border-[#1a3a5c] transition-colors cursor-pointer"
+        className="flex items-center justify-center w-9 h-9 rounded-md border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-800 hover:border-[#1a3a5c] transition-colors cursor-pointer"
       >
         <ArrowUpDown
           size={16}
@@ -54,10 +54,10 @@ export default function SortDropdown() {
       <div ref={ref} className="relative">
         <button
           onClick={() => setOpen((o) => !o)}
-          className={`flex items-center gap-2 pl-3 pr-2.5 py-2 text-sm font-medium rounded-md border transition-colors bg-white cursor-pointer ${
+          className={`flex items-center gap-2 pl-3 pr-2.5 py-2 text-sm font-medium rounded-md border transition-colors bg-white dark:bg-slate-800 cursor-pointer ${
             open
-              ? "border-[#1a3a5c] text-[#1a3a5c]"
-              : "border-gray-200 text-gray-700 hover:border-[#1a3a5c]"
+              ? "border-[#1a3a5c] text-[#1a3a5c] dark:border-[#84DCCF] dark:text-[#84DCCF]"
+              : "border-gray-200 dark:border-slate-600 text-gray-700 dark:text-slate-300 hover:border-[#1a3a5c]"
           }`}
         >
           {selected.label}
@@ -70,7 +70,7 @@ export default function SortDropdown() {
         </button>
 
         {open && (
-          <div className="absolute right-0 mt-1 w-44 rounded-md border border-[#1a3a5c]/20 bg-white shadow-lg z-50 overflow-hidden">
+          <div className="absolute right-0 mt-1 w-44 rounded-md border border-[#1a3a5c]/20 dark:border-slate-600 bg-white dark:bg-slate-800 shadow-lg z-50 overflow-hidden">
             {OPTIONS.map((o) => (
               <button
                 key={o.sort}
@@ -81,7 +81,7 @@ export default function SortDropdown() {
                 className={`w-full text-left px-4 py-2.5 text-sm transition-colors cursor-pointer ${
                   o.sort === sort
                     ? "bg-[#1a3a5c] text-white font-medium"
-                    : "text-gray-700 hover:bg-[#e8f0f7] hover:text-[#1a3a5c]"
+                    : "text-gray-700 dark:text-slate-300 hover:bg-[#e8f0f7] dark:hover:bg-slate-700 hover:text-[#1a3a5c]"
                 }`}
               >
                 {o.label}

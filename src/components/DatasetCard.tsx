@@ -23,9 +23,9 @@ export default function DatasetCard({ dataset }: { dataset: Dataset }) {
 
   return (
     <Link href={url} className="h-full block group" target="_blank">
-      <article className="bg-white rounded-xl border border-gray-200 shadow-sm group-hover:shadow-md transition-all p-5 flex flex-col gap-3 cursor-pointer min-h-[220px] h-full">
+      <article className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 shadow-sm group-hover:shadow-md transition-all p-5 flex flex-col gap-3 cursor-pointer min-h-[220px] h-full">
         {/* Title */}
-        <h3 className="text-[#1a6fa8] font-semibold text-[16px] leading-snug line-clamp-3 break-all overflow-hidden">
+        <h3 className="text-[#1a6fa8] dark:text-[#84DCCF] font-semibold text-[16px] leading-snug line-clamp-3 break-all overflow-hidden">
           {dataset.title}
         </h3>
 
@@ -50,7 +50,7 @@ export default function DatasetCard({ dataset }: { dataset: Dataset }) {
         </div>
 
         {/* Description */}
-        <p className="text-sm text-gray-500 leading-relaxed line-clamp-3 flex-1 border-t border-gray-300 pt-2">
+        <p className="text-sm text-gray-500 dark:text-slate-400 leading-relaxed line-clamp-3 flex-1 border-t border-gray-300 dark:border-slate-600 pt-2">
           {stripHtml(dataset.description || "")}
         </p>
 

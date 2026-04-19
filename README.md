@@ -10,9 +10,10 @@ A modern, responsive dataset discovery platform built for [CivicDays](https://ci
 - **Advanced Filters** — Filter by Sectors, Data Type (Formats), Tags, and Geographies
 - **Sort & Order** — Sort datasets by most recent or alphabetically
 - **Grid / List View** — Toggle between card grid and table row layout
+- **Dark / Light Theme** — Toggle between dark and light mode, managed via Redux
 - **Pagination** — Navigate across paginated results
 - **Loading Skeletons** — Smooth loading states during API fetch
-- **Responsive Design** — Mobile-friendly layout with collapsible filter sidebar
+- **Responsive Design** — Mobile-friendly layout with collapsible filter sidebar, tested down to 320px
 
 ---
 
@@ -26,6 +27,8 @@ A modern, responsive dataset discovery platform built for [CivicDays](https://ci
 | [Redux Toolkit](https://redux-toolkit.js.org) | Global state management |
 | [Tailwind CSS v4](https://tailwindcss.com) | Utility-first styling |
 | [Lucide React](https://lucide.dev) | Icon library |
+| [Jest 29](https://jestjs.io) | Unit testing |
+| [Testing Library](https://testing-library.com) | Component & hook testing |
 
 ---
 
@@ -34,6 +37,7 @@ A modern, responsive dataset discovery platform built for [CivicDays](https://ci
 ```
 CivicDataSpace/
 ├── app/
+│   ├── globals.css         # Global styles + dark mode overrides
 │   ├── layout.tsx          # Root layout
 │   └── page.tsx            # Entry page
 ├── src/
@@ -45,6 +49,8 @@ CivicDataSpace/
 │   │   ├── SearchBar.tsx        # Search input
 │   │   ├── SortDropdown.tsx     # Sort controls
 │   │   ├── ViewToggle.tsx       # Grid/List toggle
+│   │   ├── ThemeToggle.tsx      # Dark/Light mode toggle button
+│   │   ├── ThemeProvider.tsx    # Applies dark class to <html> from Redux state
 │   │   ├── Pagination.tsx       # Page navigation
 │   │   ├── Header.tsx           # Site header
 │   │   ├── Footer.tsx           # Site footer
@@ -57,10 +63,24 @@ CivicDataSpace/
 │   ├── lib/
 │   │   └── api.ts               # API client (CivicDays API)
 │   ├── store/
-│   │   ├── appSlice.ts          # Filters & view mode state
+│   │   ├── appSlice.ts          # Filters, view mode & theme state
 │   │   └── index.ts             # Redux store setup
-│   └── types/
-│       └── index.ts             # Shared TypeScript interfaces
+│   ├── types/
+│   │   └── index.ts             # Shared TypeScript interfaces (Dataset, Filters, ViewMode, Theme)
+│   └── __tests__/
+│       ├── api.test.ts              # API client unit tests
+│       ├── appSlice.test.ts         # Redux slice unit tests
+│       ├── DatasetCard.test.tsx     # DatasetCard component tests
+│       ├── DatasetRow.test.tsx      # DatasetRow component tests
+│       ├── FiltersSidebar.test.tsx  # FiltersSidebar component tests
+│       ├── LoadingSkeleton.test.tsx # LoadingSkeleton component tests
+│       ├── Pagination.test.tsx      # Pagination component tests
+│       ├── SearchBar.test.tsx       # SearchBar component tests
+│       ├── SortDropdown.test.tsx    # SortDropdown component tests
+│       ├── States.test.tsx          # Empty/Error state tests
+│       ├── useDebounce.test.ts      # useDebounce hook tests
+│       ├── ViewToggle.test.tsx      # ViewToggle component tests
+│       └── testUtils.tsx            # Shared render helper with Redux store
 └── public/
     └── assets/                  # Brand logos and icons
 ```
@@ -101,6 +121,19 @@ npm run start
 
 ```bash
 npm run lint
+```
+
+### Tests
+
+```bash
+# Run all tests
+npm test
+
+# Watch mode
+npm run test:watch
+
+# Coverage report
+npm run test:coverage
 ```
 
 ---

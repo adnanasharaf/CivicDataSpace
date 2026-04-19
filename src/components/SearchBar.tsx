@@ -23,7 +23,7 @@ export default function SearchBar() {
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Start typing to search for any Dataset"
-        className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow shadow-sm"
+        className="w-full pl-10 pr-4 py-2.5 border border-gray-200 dark:border-slate-600 rounded-lg text-sm bg-white dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow shadow-sm"
         aria-label="Search datasets"
       />
     </div>

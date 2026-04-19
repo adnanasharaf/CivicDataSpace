@@ -29,8 +29,8 @@ export default function Pagination({ total }: { total: number }) {
       aria-label={label}
       className={`w-7 h-7 flex items-center justify-center rounded border text-xs transition-colors ${
         disabled
-          ? "border-gray-200 text-gray-300 cursor-not-allowed"
-          : "border-gray-300 text-gray-600 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-600 cursor-pointer"
+          ? "border-gray-200 dark:border-slate-700 text-gray-300 dark:text-slate-600 cursor-not-allowed"
+          : "border-gray-300 dark:border-slate-600 text-gray-600 dark:text-slate-400 hover:bg-blue-50 dark:hover:bg-slate-700 hover:border-blue-400 hover:text-blue-600 cursor-pointer"
       }`}
     >
       {children}
@@ -38,15 +38,15 @@ export default function Pagination({ total }: { total: number }) {
   );
 
   return (
-    <div className="flex flex-wrap items-center justify-end gap-4 px-5 py-3 bg-white rounded-xl border border-gray-200 shadow-sm text-sm text-gray-600">
+    <div className="flex flex-wrap items-center justify-end gap-4 px-5 py-3 bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 shadow-sm text-sm text-gray-600 dark:text-slate-400">
       {/* Rows per page */}
       <div className="flex items-center gap-2">
-        <span className="text-xs text-gray-500">Rows per page</span>
+        <span className="text-xs text-gray-500 dark:text-slate-400">Rows per page</span>
         <div className="relative">
           <select
             value={size}
             onChange={(e) => dispatch(setSize(Number(e.target.value)))}
-            className="appearance-none pl-2 pr-6 py-1 border border-gray-300 rounded text-xs focus:outline-none bg-white text-gray-700 cursor-pointer"
+            className="appearance-none pl-2 pr-6 py-1 border border-gray-300 dark:border-slate-600 rounded text-xs focus:outline-none bg-white dark:bg-slate-700 text-gray-700 dark:text-slate-300 cursor-pointer"
             aria-label="Rows per page"
           >
             {SIZE_OPTIONS.map((s) => (
@@ -58,19 +58,19 @@ export default function Pagination({ total }: { total: number }) {
       </div>
 
       {/* Page info */}
-      <span className="text-xs text-gray-500">
+      <span className="text-xs text-gray-700 dark:text-slate-200">
         Page{" "}
-        <strong className="text-gray-800 font-semibold">{String(page).padStart(2, "0")}</strong>
+        <strong className="font-semibold" style={{ color: "inherit" }}>{String(page).padStart(2, "0")}</strong>
         {" "}of{" "}
-        <strong className="text-gray-800 font-semibold">{String(totalPages).padStart(2, "0")}</strong>
+        <strong className="font-semibold" style={{ color: "inherit" }}>{String(totalPages).padStart(2, "0")}</strong>
       </span>
 
       {/* Nav buttons */}
       <div className="flex items-center gap-1">
-        {navBtn(() => go(1), page === 1, <ChevronsLeft size={13} color="#194C71"/>, "First page")}
-        {navBtn(() => go(page - 1), page === 1, <ChevronLeft size={13} color="#194C71"/>, "Previous page")}
-        {navBtn(() => go(page + 1), page === totalPages, <ChevronRight size={13} color="#194C71"/>, "Next page")}
-        {navBtn(() => go(totalPages), page === totalPages, <ChevronsRight size={13} color="#194C71"/>, "Last page")}
+        {navBtn(() => go(1), page === 1, <ChevronsLeft size={13} className="text-[#194C71] dark:text-slate-300"/>, "First page")}
+        {navBtn(() => go(page - 1), page === 1, <ChevronLeft size={13} className="text-[#194C71] dark:text-slate-300"/>, "Previous page")}
+        {navBtn(() => go(page + 1), page === totalPages, <ChevronRight size={13} className="text-[#194C71] dark:text-slate-300"/>, "Next page")}
+        {navBtn(() => go(totalPages), page === totalPages, <ChevronsRight size={13} className="text-[#194C71] dark:text-slate-300"/>, "Last page")}
       </div>
     </div>
   );

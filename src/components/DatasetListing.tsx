@@ -42,34 +42,32 @@ export default function DatasetListing() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Breadcrumb */}
-      <div className="bg-[#fdb557]">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 py-1.5 text-xs flex items-center gap-1.5">
-          <span className="text-gray-700 font-medium">Home</span>
-          <span className="text-gray-600">›</span>
-          <span className="text-gray-800 font-bold">All Data</span>
-          <span className="text-gray-600">›</span>
-        </div>
-      </div>
 
       <div className="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-6">
         {/* Top bar */}
-        <div className="flex flex-col xs:flex-row flex-wrap items-stretch xs:items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-          <div className="flex items-center gap-2 w-full xs:flex-1 xs:min-w-0">
-            <div className="flex-1 min-w-0">
-              <SearchBar />
-            </div>
-            <button
-              onClick={() => setMobileFilterOpen(true)}
-              className="lg:hidden flex items-center gap-1.5 px-3 py-2.5 border border-gray-200 rounded-lg bg-white text-sm text-gray-600 shadow-sm flex-shrink-0 cursor-pointer"
-            >
-              <Filter size={16} />
-              <span className="hidden xs:inline">Filters</span>
-            </button>
-          </div>
-          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <div className="mb-4 sm:mb-6">
+          {/* Desktop: single row */}
+          <div className="hidden lg:flex items-center gap-3">
+            <div className="flex-1 min-w-0"><SearchBar /></div>
             <ViewToggle />
             <SortDropdown />
+          </div>
+          {/* Mobile: two rows */}
+          <div className="flex flex-col gap-2 lg:hidden">
+            <div className="flex items-center gap-2">
+              <div className="flex-1 min-w-0"><SearchBar /></div>
+              <button
+                onClick={() => setMobileFilterOpen(true)}
+                className="flex items-center gap-1.5 px-3 py-2.5 border border-gray-200 rounded-lg bg-white text-sm text-gray-600 shadow-sm flex-shrink-0 cursor-pointer"
+              >
+                <Filter size={16} />
+                <span>Filters</span>
+              </button>
+            </div>
+            <div className="flex items-center gap-2">
+              <ViewToggle />
+              <SortDropdown />
+            </div>
           </div>
         </div>
 
@@ -85,11 +83,11 @@ export default function DatasetListing() {
           {mobileFilterOpen && (
             <div className="fixed inset-0 z-50 lg:hidden">
               <div className="absolute inset-0 bg-black/40" onClick={() => setMobileFilterOpen(false)} />
-              <div className="absolute left-0 top-0 h-full w-72 bg-white shadow-xl overflow-y-auto p-4">
+              <div className="absolute left-0 top-0 h-full w-72 bg-white dark:bg-slate-800 shadow-xl overflow-y-auto p-4">
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="font-bold text-gray-800">Filters</h2>
+                  <h2 className="font-bold text-gray-800 dark:text-slate-200">Filters</h2>
                   <button onClick={() => setMobileFilterOpen(false)} className="cursor-pointer">
-                    <X size={20} className="text-gray-500" />
+                    <X size={20} className="text-gray-500 dark:text-slate-400" />
                   </button>
                 </div>
                 <FiltersSidebar aggregations={baseAggregations} onClose={() => setMobileFilterOpen(false)} />

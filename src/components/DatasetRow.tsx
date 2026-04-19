@@ -60,38 +60,38 @@ export default function DatasetRow({
 
   return (
     <Link href={url} target="_blank" className="block group">
-      <article className="w-full rounded-[12px] border border-[#dfe5ea] bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all hover:shadow-md">
+      <article className="w-full rounded-[12px] border border-[#dfe5ea] dark:border-slate-700 bg-white dark:bg-slate-800 px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all hover:shadow-md">
         {/* Title */}
-        <h3 className="text-[16px] font-semibold leading-[18px] text-[#1a6fa8] group-hover:text-[#1f5f82] break-all overflow-hidden">
+        <h3 className="text-[16px] font-semibold leading-[18px] text-[#1a6fa8] dark:text-[#84DCCF] group-hover:text-[#1f5f82] break-all overflow-hidden">
           {dataset.title}
         </h3>
 
         {/* Description */}
-        <p className="mt-2 text-[14px] leading-[18px] text-[#666] line-clamp-2">
+        <p className="mt-2 text-[14px] leading-[18px] text-gray-500 dark:text-slate-400 line-clamp-2">
           {stripHtml(dataset.description || "")}
         </p>
 
         {/* Meta */}
-        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#6f6f6f]">
+        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#6f6f6f] dark:text-slate-400">
           {date && (
             <div className="flex items-center gap-1">
               <Calendar size={12} className="text-[#d28d26]" />
               <span>Last Updated :</span>
-              <span className="font-medium text-[#555]">{date}</span>
+              <span className="font-medium text-slate-600 dark:text-slate-300">{date}</span>
             </div>
           )}
 
           <div className="flex items-center gap-1">
             <Download size={12} className="text-[#d28d26]" />
             <span>Downloads :</span>
-            <span className="font-medium text-[#555]">{displayDownloads}</span>
+            <span className="font-medium text-slate-600 dark:text-slate-300">{displayDownloads}</span>
           </div>
 
           {geo && (
             <div className="flex items-center gap-1">
               <Globe size={12} className="text-[#d28d26]" />
               <span>Geography :</span>
-              <span className="font-medium text-[#555]">{geo}</span>
+              <span className="font-medium text-slate-600 dark:text-slate-300">{geo}</span>
             </div>
           )}
 
@@ -110,9 +110,9 @@ export default function DatasetRow({
           {/* Left Side */}
           <div className="space-y-2">
             {/* Sectors */}
-            <div className="flex items-center gap-2 text-[11px] text-[#777]">
+            <div className="flex items-center gap-2 text-[11px] text-[#777] dark:text-slate-400">
               <span>Sectors :</span>
-               <span className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 bg-white" title={dataset.organization?.name ?? dataset.user?.name}>
+               <span className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700" title={dataset.organization?.name ?? dataset.user?.name}>
                   <Image alt="Logo" className="h-6 w-6 object-contain" src="/assets/Disaster Risk Reduction.svg" width={24} height={24} />
               </span>
             </div>
@@ -120,7 +120,7 @@ export default function DatasetRow({
             {/* Tags */}
             <div className="flex flex-wrap items-center gap-1.5">
               {dataset.tags?.length > 0 && (
-                <span className="text-[11px] text-[#777]">Tags :</span>
+                <span className="text-[11px] text-[#777] dark:text-slate-400">Tags :</span>
               )}
 
               {dataset.tags?.slice(0, 5).map((tag, i) => (
@@ -139,10 +139,10 @@ export default function DatasetRow({
           {/* Right Side */}
           <div className="space-y-2 text-right">
             {/* Published by */}
-            <div className="flex items-center justify-end gap-2 text-[11px] text-[#777]">
+            <div className="flex items-center justify-end gap-2 text-[11px] text-[#777] dark:text-slate-400">
               <span>Published by :</span>
 
-              <span className="flex h-6 w-6 items-center justify-center rounded-full border border-[#e5e5e5] bg-white">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full border border-[#e5e5e5] dark:border-slate-600 bg-white dark:bg-slate-700">
                 <Image
                   src="/assets/CDL_Primary_Logo.png"
                   alt="logo"
@@ -156,7 +156,7 @@ export default function DatasetRow({
             {/* Formats */}
             {dataset.formats?.length > 0 && (
               <div className="flex items-center justify-end gap-1.5">
-                <span className="text-[11px] text-[#777]">Formats :</span>
+                <span className="text-[11px] text-[#777] dark:text-slate-400">Formats :</span>
 
                 {dataset.formats.map((item) => (
                   <span

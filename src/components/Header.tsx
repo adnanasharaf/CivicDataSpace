@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 import { Search, Menu, X } from "lucide-react";
 import ThemeToggle from "@/src/components/ThemeToggle";
 import Image from "next/image";
@@ -8,7 +9,13 @@ import { useAppDispatch, useAppSelector } from "@/src/hooks/redux";
 import { setFilters } from "@/src/store/appSlice";
 import { useDebounce } from "@/src/hooks/useDebounce";
 
-const NAV_LINKS = ["ALL DATA", "SECTORS", "USE CASES", "PUBLISHERS", "ABOUT US"];
+const NAV_LINKS = [
+  { label: "ALL DATA", href: "/all-data" },
+  { label: "SECTORS", href: "/coming-soon?page=Sectors" },
+  { label: "USE CASES", href: "/coming-soon?page=Use+Cases" },
+  { label: "PUBLISHERS", href: "/coming-soon?page=Publishers" },
+  { label: "ABOUT US", href: "/coming-soon?page=About+Us" },
+];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -16,6 +23,15 @@ export default function Header() {
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const mobileInputRef = useRef<HTMLInputElement>(null);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const isActive = (href: string) => {
+    const [path, query] = href.split("?");
+    if (pathname !== path) return false;
+    if (!query) return true;
+    const param = new URLSearchParams(query);
+    return param.get("page") === searchParams.get("page");
+  };
   const dispatch = useAppDispatch();
   const query = useAppSelector((s) => s.app.filters.query);
   const debounced = useDebounce(input, 400);
@@ -81,15 +97,15 @@ export default function Header() {
             )}
           </div>
 
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS.map(({ label, href }) => (
             <Link
-              key={link}
-              href="#"
+              key={label}
+              href={href}
               className={`px-2 xl:px-3 py-2 text-xs xl:text-sm font-medium transition-colors whitespace-nowrap ${
-                link === "ALL DATA" ? "text-[#84DCCF]" : "text-gray-200 hover:text-white"
+                isActive(href) ? "text-[#84DCCF]" : "text-gray-200 hover:text-white"
               }`}
             >
-              {link}
+              {label}
             </Link>
           ))}
           <Link
@@ -152,18 +168,18 @@ export default function Header() {
         <div className="bg-[#152f4e] border-t border-[#2a4a6c] px-4 pt-2 pb-5">
           {/* Tablet: 2-col grid, Mobile: single col */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS.map(({ label, href }) => (
               <Link
-                key={link}
-                href="#"
+                key={label}
+                href={href}
                 onClick={closeAll}
                 className={`flex items-center px-3 py-3 rounded-lg text-sm font-medium transition-colors ${
-                  link === "ALL DATA"
+                  isActive(href)
                     ? "text-[#84DCCF] bg-[#1a3a5c]"
                     : "text-gray-300 hover:text-white hover:bg-[#1a3a5c]"
                 }`}
               >
-                {link}
+                {label}
               </Link>
             ))}
           </div>
