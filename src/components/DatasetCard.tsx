@@ -25,7 +25,7 @@ export default function DatasetCard({ dataset }: { dataset: Dataset }) {
     <Link href={url} className="h-full block group" target="_blank">
       <article className="bg-white rounded-xl border border-gray-200 shadow-sm group-hover:shadow-md transition-all p-5 flex flex-col gap-3 cursor-pointer min-h-[220px] h-full">
         {/* Title */}
-        <h3 className="text-[#1a6fa8] font-semibold text-[16px] leading-snug line-clamp-3">
+        <h3 className="text-[#1a6fa8] font-semibold text-[16px] leading-snug line-clamp-3 break-all overflow-hidden">
           {dataset.title}
         </h3>
 

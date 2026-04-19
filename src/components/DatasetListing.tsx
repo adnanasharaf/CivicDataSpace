@@ -54,17 +54,19 @@ export default function DatasetListing() {
 
       <div className="max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-6">
         {/* Top bar */}
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-          <div className="flex-1 min-w-0">
-            <SearchBar />
+        <div className="flex flex-col xs:flex-row flex-wrap items-stretch xs:items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+          <div className="flex items-center gap-2 w-full xs:flex-1 xs:min-w-0">
+            <div className="flex-1 min-w-0">
+              <SearchBar />
+            </div>
+            <button
+              onClick={() => setMobileFilterOpen(true)}
+              className="lg:hidden flex items-center gap-1.5 px-3 py-2.5 border border-gray-200 rounded-lg bg-white text-sm text-gray-600 shadow-sm flex-shrink-0 cursor-pointer"
+            >
+              <Filter size={16} />
+              <span className="hidden xs:inline">Filters</span>
+            </button>
           </div>
-          <button
-            onClick={() => setMobileFilterOpen(true)}
-            className="lg:hidden flex items-center gap-1.5 px-3 py-2.5 border border-gray-200 rounded-lg bg-white text-sm text-gray-600 shadow-sm flex-shrink-0 cursor-pointer"
-          >
-            <Filter size={16} />
-            Filters
-          </button>
           <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <ViewToggle />
             <SortDropdown />

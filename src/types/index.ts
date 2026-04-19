@@ -43,3 +43,4 @@ export interface Filters {
 }
 
 export type ViewMode = "grid" | "list";
+export type Theme = "light" | "dark";

@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { Filters, ViewMode } from "@/src/types";
+import type { Filters, ViewMode, Theme } from "@/src/types";
 
 interface AppState {
   filters: Filters;
   viewMode: ViewMode;
+  theme: Theme;
 }
 
 const initialState: AppState = {
@@ -19,6 +20,7 @@ const initialState: AppState = {
     order: "desc",
   },
   viewMode: "grid",
+  theme: "light",
 };
 
 const appSlice = createSlice({
@@ -43,11 +45,14 @@ const appSlice = createSlice({
     setViewMode(state, action: PayloadAction<ViewMode>) {
       state.viewMode = action.payload;
     },
+    setTheme(state, action: PayloadAction<Theme>) {
+      state.theme = action.payload;
+    },
     resetFilters(state) {
       state.filters = { ...initialState.filters };
     },
   },
 });
 
-export const { setFilters, setPage, setSize, setSort, setViewMode, resetFilters } = appSlice.actions;
+export const { setFilters, setPage, setSize, setSort, setViewMode, resetFilters, setTheme } = appSlice.actions;
 export default appSlice.reducer;

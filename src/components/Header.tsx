@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { Search, Menu, X } from "lucide-react";
+import ThemeToggle from "@/src/components/ThemeToggle";
 import Image from "next/image";
 import { useAppDispatch, useAppSelector } from "@/src/hooks/redux";
 import { setFilters } from "@/src/store/appSlice";
@@ -43,9 +44,9 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-          <Image alt="Logo" className="h-8 w-8 object-contain" src="/assets/brandlogo.png" width={100} height={100} />
-          <span className="text-white text-sm sm:text-base font-semibold">CivicDataSpace</span>
+        <Link href="/" className="flex items-center gap-2 flex-shrink-0 min-w-0">
+          <Image alt="Logo" className="h-8 w-8 object-contain flex-shrink-0" src="/assets/brandlogo.png" width={100} height={100} />
+          <span className="text-white text-sm sm:text-base font-semibold truncate">CivicDataSpace</span>
         </Link>
 
         {/* Desktop Nav — only on lg+ */}
@@ -97,10 +98,12 @@ export default function Header() {
           >
             LOGIN / SIGN UP
           </Link>
+          <ThemeToggle />
         </nav>
 
         {/* Mobile / Tablet right side — below lg */}
-        <div className="lg:hidden flex items-center gap-1">
+        <div className="lg:hidden flex items-center gap-0.5 flex-shrink-0">
+          <ThemeToggle />
           <button
             onClick={() => { setSearchOpen((s) => !s); setOpen(false); }}
             className="p-2 text-gray-300 hover:text-white cursor-pointer"

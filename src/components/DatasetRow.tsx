@@ -62,7 +62,7 @@ export default function DatasetRow({
     <Link href={url} target="_blank" className="block group">
       <article className="w-full rounded-[12px] border border-[#dfe5ea] bg-white px-5 py-4 shadow-[0_1px_3px_rgba(0,0,0,0.05)] transition-all hover:shadow-md">
         {/* Title */}
-        <h3 className="text-[16px] font-semibold leading-[18px] text-[#1a6fa8] group-hover:text-[#1f5f82]">
+        <h3 className="text-[16px] font-semibold leading-[18px] text-[#1a6fa8] group-hover:text-[#1f5f82] break-all overflow-hidden">
           {dataset.title}
         </h3>
 
